@@ -57,14 +57,7 @@ Once the service is created, click on it, and then click on `Service credentials
 $ git clone https://github.com/xnorax/watson-second-opinion.git
 $ cd watson-second-opinion/
 ```
-
-### 4. Install Dependencies
-
-```
-$ npm install
-```
-
-### 5. Set Envioronment Variables
+### 4. Set Envioronment Variables
 
 From your cloned repo folder, go to *.env* file to paste your credentials.  
 
@@ -74,10 +67,15 @@ NLU_USERNAME=
 NLU_PASSWORD=
 ```
 
+### 5. Install Dependencies
+
+```
+$ npm install
+```
+
 ### 6. Run the App
 
 Run the app by starting Node.
-
 
 ```
 $ node app.js
