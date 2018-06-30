@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+require('dotenv').config()
 
 // Watson config
 var Watson = require('./lib/watson.js');

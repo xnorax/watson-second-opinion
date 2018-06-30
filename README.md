@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/watson-second-opinion.svg?branch=master)](https://travis-ci.org/IBM/watson-second-opinion)
 
 # Create a Review Analyzer with Watson Natural Language Understanding
-This is the code pattern for https://2ndopinion.mybluemix.net/. 
+This is the code pattern for https://2ndopinion.mybluemix.net/.
 
 ![demo](https://i.makeagif.com/media/6-07-2018/IeEcIv.gif)
 
@@ -33,86 +33,45 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Databases](https://en.wikipedia.org/wiki/IBM_Information_Management_System#.22Full_Function.22_databases): Repository for storing and managing collections of data.
 * [Cloud](https://www.ibm.com/developerworks/learn/cloud/): Accessing computer and information technology resources through the Internet.
 
-## Watch the Video
+## Requirements
+- [IBM Cloud Account](https://ibm.biz/BdZzCR)
+- [Node.js](https://nodejs.org/en/download/)
 
-[![](docs/youtubePicture.png)](https://www.youtube.com/watch?v=wwNAEvbxd54&list=PLVztKpIRxvQXhHlMQttCfYZrDN8aELnzP&index=1&t=1s)
 
 # Steps
 
-Use the ``Deploy to IBM Cloud`` button **OR** create the services and run locally.
+### 1. Create IBM Cloud services
 
-## Deploy to IBM Cloud
-If you do not have an IBM Cloud account yet, you will need to create one [here](https://ibm.biz/BdjLxy).
+From IBM Cloud catalog, create the following services:
 
-[![Deploy to IBM Cloud](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM/watson-second-opinion)
+* [**Watson Natural Language Understanding**](https://console.bluemix.net/catalog/services/natural-language-understanding)
+* [**Cloudant NoSQL DB**](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
 
-1. Press the above `Deploy to IBM Cloud`
-    > The toolchain uses GitHub for its source control. You may be asked to authenticate the toolchain to use your account. The toolchain will clone this repo and will be used for its deployment.
-<!--optional step-->
-2. In Toolchains, click on ``Delivery Pipeline`` to watch while the app is deployed. Once deployed, the app can be viewed by clicking ``View app``.
+### 2. Get Service Credentials
 
-<!--update with service names from manifest.yml-->
-3. To see the app and services created and configured for this Code Pattern, use the IBM Cloud dashboard. The app will be named according to what you inputted in the toolchain. The following services are created and easily identified by the `wso-` prefix:
-    * wso-nlu
-    * wso-cloudant
+Once the service is created, click on it, and then click on `Service credentials` in the top left corner of the screen. Then click `New credential` and then `add`. For `Cloudant NoSQL DB`, save the value for `url`. For `Natural Language Understanding` save the value for `username` and `password`.
 
-### Update the Environment of your deployed app
-
-![envVar1](https://i.makeagif.com/media/6-07-2018/Gfmeju.gif)
-
-1. Navigate to https://console.bluemix.net/dashboard/apps/
-2. Located and click on your newly created application 
-3. Select 'Runtime' in the left menu
-4. Select the 'Environment Variables' tab in the middle of the page
-5. Scroll down to the User defined variables section
-6. Click on ``add``. 
-7. THIS IS EXTREMELY IMPORTANT. Make sure to write the name of the env variable EXACTLY as shown, otherwise, the app wont work. Scroll up until you see `VCAP_SERVICES`. You will then see `cloudantNoSQLDB` and under that `url`.  Under 'Name', type in `CLOUDANT_URL`, and under 'Value', paste the `url` value from the `cloudantNoSQLDB` section of `VCAP_SERVICES`.
-
-![envVar2](https://i.makeagif.com/media/6-07-2018/ubRZcv.gif)
-
-8. Repeat step 6 but now under name, type in `NLU_USERNAME` and under value go to `natural-language-understanding` section of the `VCAP_SERVICES` and get the value for `username`.
-9. Repeat step 6 but now under name, type in `NLU_PASSWORD`, and under value go `natural-language-understanding` section of the `VCAP_SERVICES` and get the value for `password`.
-10. Click ``save``.
-11. Nice job! You are done. Click on ``visit App URL`` at the top of the page to interact with the app. Simply copy and paste an Amazon URL from a product page into the app, and click on the magnifying glass and voilà! You will get some valuable insights from Watson.
-
-## Deploy Locally
-
-### 1. Clone the repo
+### 3. Clone the repo
 
 ```
-$ git clone https://github.com/IBM/watson-second-opinion
+$ git clone https://github.com/xnorax/watson-second-opinion.git
 $ cd watson-second-opinion/
 ```
 
-### 2. Install Dependencies
+### 4. Install Dependencies
 
 ```
 $ npm install
 ```
 
-### 3. Create IBM Cloud services
-
-Create the following service:
-
-* [**Watson Natural Language Understanding**](https://console.bluemix.net/catalog/services/natural-language-understanding)
-* [**Cloudant NoSQL DB**](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
-
-
-### 4. Get Service Credentials
-
-Once the service is created, click on it, and then click on `Service credentials` in the top left corner of the screen. Then click `New credential` and then `add`. For `Cloudant NoSQL DB`, save the value for `url`. For `Natural Language Understanding` save the value for `username` and `password`.
-
 ### 5. Set Envioronment Variables
 
-After we run ``npm install`` from step 2 above, we need to set 3 enviornment variables that we got from step 4. Run the following commands to set these variables (your usernames / passwords / url will be different):
+From your cloned repo folder, go to *.env* file to paste your credentials.  
 
 ```
-$ export CLOUDANT_URL=https://f9d9e9d9-8b3f-4625-a425-7a8bbd57aeaf-bluemix:f6f4f68665aa1b6b7821ca0117302353427eb643306d3d2652bc867768bc4c80@f9d9e9d9-8b3f-4625-a425-7a8bbd57hdsf-bluemix.cloudant.com
-
-$ export NLU_USERNAME=9a512210-2bdd-4b20-8a73-1fb623511bb2
-
-$ export NLU_PASSWORD=2VB8BaW8HGK6
-
+CLOUDANT_URL=
+NLU_USERNAME=
+NLU_PASSWORD=
 ```
 
 ### 6. Run the App
@@ -126,16 +85,12 @@ $ node app.js
 
 Go to `http://localhost:4000/` in your browser of choice, and you should be greeted with the Watson Second Opinion UI.
 
-Find a product in Amazon that you want to learn more about, copy the URL of the product page, paste it into the app, and click 🔍. After Watson Natural Language Understanding finishes processing all the reviews, the app will show you its General Sentiment and Top entities found: 
+Find a product in Amazon that you want to learn more about, copy the URL of the product page, paste it into the app, and click 🔍. After Watson Natural Language Understanding finishes processing all the reviews, the app will show you its General Sentiment and Top entities found:
 
 
 ![Landing Page](docs/analysis.png)
 
-Great job! You've successfully run Watson Second Opinion on your local machine! Thanks for taking the time to walk through the app with me. I am welcoming all pull requests, and any updates to the project. Have fun with it! 
-
-# Links
-
-* [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+Great job! You've successfully run Watson Second Opinion on your local machine! Thanks for taking the time to walk through the app with me. I am welcoming all pull requests, and any updates to the project. Have fun with it!
 
 # Learn more
 
