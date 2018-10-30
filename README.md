@@ -34,7 +34,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 * [Cloud](https://www.ibm.com/developerworks/learn/cloud/): Accessing computer and information technology resources through the Internet.
 
 ## Requirements
-- [IBM Cloud Account](https://ibm.biz/BdZzCR)
+- [IBM Cloud Account](https://ibm.biz/BdYpAv)
 - [Node.js](https://nodejs.org/en/download/)
 
 
