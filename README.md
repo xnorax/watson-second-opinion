@@ -45,7 +45,9 @@ When the reader has completed this Code Pattern, they will understand how to:
 From IBM Cloud catalog, create the following services:
 
 * [**Watson Natural Language Understanding**](https://console.bluemix.net/catalog/services/natural-language-understanding)
+  Copy `username` and `password` for later use.
 * [**Cloudant NoSQL DB**](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)
+  Copy `url` for later use.
 
 ### 2. Get Service Credentials
 
